@@ -1,0 +1,68 @@
+.borderTest{
+  /*border: 1px solid black;*/
+}
+
+.control-buttons{
+  /*border-left: 1px solid LightGrey;*/
+  text-align: center;
+}
+
+.buttonBox{
+  /*border : 1px solid black;*/
+  height: 130px;
+  width:176px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
+
+}
+
+.horizontalAlign{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /*border : 1px solid black;*/
+  text-align:center;
+}
+
+.buttonSpaceBox{
+  padding-top:68px; /* leave space (like button size)*/
+  /*border : 1px solid black;*/
+}
+
+.myButton{
+  border-radius: 10px;
+  /*border : 1px solid grey;*/
+  background-color: #007bff; /* bootstrap light blue */
+  color: white;
+
+  height: 55px;
+  width: 55px;
+  display: inline-block;
+  text-align:center;
+  padding-top:8px;
+  font-size:x-large;
+  margin-top:5px;
+  cursor:pointer;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+.myButtonDarkBlue{
+  background-color: #0069d9; /* bootstrap dark blue */
+}
+
+.unused{
+  background-color : LightGrey;
+}
+
+.invisible{
+  background-color : none;
+  border : none;
+}

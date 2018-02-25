@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+ <meta charset="UTF-8"> 
+<html>
+<head>
+	<title>Mqtt Lego Car !</title>
+</head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- Using Boostrap CDN -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- ******************** -->
+    <script src="http://www.hivemq.com/demos/websocket-client/js/mqttws31.js" type="text/javascript"></script>
+    <script src="mqttService.js" type="text/javascript"></script>
+    <script src="controller.js" type="text/javascript"></script>
+<body>
+	<div class="container">				
+		<div class="card" >
+			<div class="card-header" id="headingOne">			
+				<button class="btn btn-link" data-toggle="collapse" data-target="#broker-form" aria-expanded="true" aria-controls="collapseOne">
+      				<h5>Broker parameters</h5>
+    			</button>
+				<span id="connection-state" class="badge badge-secondary">---</span>
+			</div>
+			<div class="collapse" id="broker-form">
+				<div class="card-body">
+					<form>
+						<div class="row">
+							<div class="col-sm">
+								<div class="form-group">
+									<label for="broker-ip">Broker IP</label>
+									<input type="text" id="broker-ip" class="form-control" value="192.168.1.30">
+								</div>
+							</div>
+							<div class="col-sm">
+								<div class="form-group">
+									<label for="broker-port">WebSocket broker Port</label>
+									<input type="text" id="broker-port" class="form-control" value="1884">
+								</div>
+							</div>
+							<div class="col-sm">
+								<div class="form-group">
+									<label for="broker-login">Broker login</label>
+									<input type="text" id="broker-login" class="form-control" value="">
+								</div>
+							</div>
+							<div class="col-sm">
+								<div class="form-group">
+									<label for="broker-password">Broker password</label>
+									<input type="password" id="broker-password" class="form-control" value="">
+								</div>
+							</div>
+							
+						</div>
+						<div class="row">
+							<div class="col-sm">
+								<input type="button" class="btn btn-primary" onclick="connect();" value="Connect">
+							</div>
+
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-header" id="headingTwo">			
+				<button class="btn btn-link" data-toggle="collapse" data-target="#controls-form" aria-expanded="true" aria-controls="collapseTwo">
+      				<h5>Robot controls</h5>
+    			</button>
+				<span id="controls-state" class="badge badge-secondary">---</span>
+			</div>
+			<div class="collapse" id="controls-form">
+				<div class="card-body">
+
+					<div class="row">
+						<!-- LEFT PANEL -->
+						<div class=" col-sm-6 borderTest">
+							camera soon ?
+						</div>
+							
+						<!-- RIGHT PANEL - CONTROLS -->
+						<div class=" col-sm-6 borderTest border-left">
+							<div class="row">
+								<!-- Robot speed-->
+								<div class="col-sm">
+									<label for="speed-slider" class="horizontalAlign">Robot speed :</label>
+									<input id="speed-slider" class="horizontalAlign" type="range" min="750" max="1000" value="1000" step="10">
+								</div>
+								<!-- Radio button for normal/reverse driving-->
+								<div class="col-sm">
+									<div class="horizontalAlign">
+										<div class="btn-group btn-group-toggle" data-toggle="buttons">
+										  <label class="btn btn-primary active">
+										    <input type="radio" name="options" id="normal" autocomplete="off" > Normal
+										  </label>
+										  <label class="btn btn-primary">
+										    <input type="radio" name="options" id="reverse" autocomplete="off" checked> Reverse
+										  </label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								
+								<!-- Space bar to fire-->
+								<div class="col-sm">
+									<div  class="buttonSpaceBox horizontalAlign">
+									 	<!--<div id="space" class="myButton myButtonSpace" onclick="mouseClick('space');">Fire !</div>-->
+									 	<input id="space" type="button" class="btn btn-primary btn-lg btn-block" onclick="callAction('space');" value="Fire !">
+									</div>
+								</div>
+								<div class="col-sm">
+									<div  class="buttonBox">
+									  <!-- Row one -->
+									  <div>
+									    <div class="myButton invisible">&nbsp</div>
+									    <div id="up" class="myButton myButtonBlue" onclick="mouseClick('up');">&#x2191;</div>
+									    <div class="myButton invisible">&nbsp</div>
+									  </div>
+									  <!-- Row Two -->
+									  <div>
+									    <div id="left" class="myButton" onclick="mouseClick('left');">&#x2190</div>
+									    <div id="down" class="myButton" onclick="mouseClick('down');">&#x2193;</div>
+									    <div id="right" class="myButton" onclick="mouseClick('right');">&#x2192;</div>
+									  </div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+
+</html> 

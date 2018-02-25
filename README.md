@@ -1,4 +1,4 @@
-# NodeMCU-wireless-lego-car
+# NodeMCU MQTT wireless lego robot car
 A Wireless lego car based on NodeMCU (ESP8266) and MQTT
 
 ## Hardware

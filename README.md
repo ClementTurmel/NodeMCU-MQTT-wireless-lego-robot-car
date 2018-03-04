@@ -1,6 +1,12 @@
 # NodeMCU MQTT wireless lego robot car
 A Wireless lego car based on NodeMCU (ESP8266) and MQTT
 
+<p align="center">
+  <img height="240" src="https://c1.staticflickr.com/5/4742/40611999981_4c5508cb0a_n.jpg">
+  <img src="https://c1.staticflickr.com/5/4752/40611997171_6e66c80507_m.jpg">
+  <img src="https://c1.staticflickr.com/5/4761/39901014364_4ce1162938_m.jpg">
+</p>
+
 ## Hardware
 * NodeMCU (ESP8266)
 * NodeMCU motor shield

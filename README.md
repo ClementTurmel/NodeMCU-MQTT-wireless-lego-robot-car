@@ -43,4 +43,16 @@ A Wireless lego car based on NodeMCU (ESP8266) and MQTT
  
  ![Webpage](https://raw.githubusercontent.com/Clemaul/NodeMCU-MQTT-wireless-lego-robot-car/master/img/webpage.PNG)
  
+  ## troubleshooting
+  
+First I wase using for power only 6 AA battery pack for motors shield AND for the nodemcu board (with a jumper between "vim" and "vm" pins on the motors shield). It work very well but, with time, **car was not responding after few second of work**. 
+  
+**Why ?** I think is because of shared alimentation between motors and nodemcu board. Motors make a **drop in voltage** affecting Nodemcu board.
+  
+**Solution : use a dedicated alimentation for the nodemcu board** and keep 6 AA battery pack only for motors. I recently purchase a 18650 Li-ion battery with 18650 shield and it works great. I plugged 18650 shield on Nodemcu board through USB port. 
+Next step will be to wire it through vin/gnd pins.
 
+## Upgrades
+* adding camera to car using Raspberry 0 with Camera V2 (same as the Raspberry with Mosquitto broker ont it)
+* adding a dedicated battery to the Raspberry 0 for camera (maybe another 18650 shield ?)
+* adding camera view to webpage (adding video component form UV4L)
